@@ -1,0 +1,102 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ServiceTimesPanel from "../components/ServiceTimesPanel.astro";
+import NewsCards from "../components/NewsCards.astro";
+import EventCards from "../components/EventCards.astro";
+
+const home = await getEntry("pages", "home");
+const serviceTimes = await getEntry("service-times", "weekly");
+const allNews = (await getCollection("news")).filter((item) => !item.data.draft);
+const allEvents = await getCollection("events");
+
+const latestNews = allNews.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 3);
+const nextEvents = allEvents
+  .filter((event) => event.data.start.getTime() >= Date.now() - 86400000)
+  .sort((a, b) => a.data.start.getTime() - b.data.start.getTime())
+  .slice(0, 3);
+
+if (!home || !serviceTimes) {
+  throw new Error("Home page content is missing.");
+}
+
+const { Content } = await home.render();
+---
+
+<BaseLayout
+  title="St Mary the Virgin, Henbury | Parish church in Bristol"
+  description="Service times, events, contact details, and parish life at St Mary the Virgin, Henbury."
+>
+  <section class="relative border-b border-stone-200 bg-stone-100">
+    <div class="container-width grid gap-6 py-10 md:grid-cols-[1.2fr_1fr] md:items-center">
+      <div>
+        <h1 class="text-4xl md:text-5xl">{home.data.title}</h1>
+        <p class="mt-3 max-w-2xl text-lg text-stone-800">{home.data.intro}</p>
+        <p class="mt-6">
+          <a class="button-primary no-underline" href="/welcome">Planning your first Sunday</a>
+        </p>
+      </div>
+      <img
+        src="/images/StMarys2.jpg"
+        alt="Exterior of St Mary the Virgin, Henbury"
+        class="h-72 w-full rounded-lg border border-stone-300 object-cover shadow-card"
+        width="760"
+        height="500"
+        loading="eager"
+      />
+    </div>
+  </section>
+
+  <div class="container-width mt-8 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+    <section class="card">
+      <h2 class="text-2xl">This week's main service</h2>
+      <p class="mt-2 text-stone-800">Sunday 10.00am Parish Eucharist</p>
+      <p class="mt-1 text-stone-700">With hymns, sermon, and Holy Communion. Junior Church most term-time Sundays.</p>
+      <p class="mt-4">
+        <a class="button-secondary no-underline" href="/services-events">See all services</a>
+      </p>
+    </section>
+    <ServiceTimesPanel services={serviceTimes.data.entries} compact />
+  </div>
+
+  <section class="container-width mt-10">
+    <h2 class="text-3xl">Quick links</h2>
+    <ul class="mt-4 grid gap-4 md:grid-cols-3">
+      {
+        home.data.cards?.map((card) => (
+          <li class="card">
+            <h3 class="text-2xl">{card.title}</h3>
+            <p class="mt-2 text-stone-800">{card.text}</p>
+            {card.linkHref && card.linkText && (
+              <p class="mt-4">
+                <a href={card.linkHref}>{card.linkText}</a>
+              </p>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="container-width mt-12">
+    <div class="mb-4 flex items-end justify-between">
+      <h2 class="text-3xl">Latest news</h2>
+      <a href="/news">All news</a>
+    </div>
+    <NewsCards items={latestNews} />
+  </section>
+
+  <section class="container-width mt-12">
+    <div class="mb-4 flex items-end justify-between">
+      <h2 class="text-3xl">Next events</h2>
+      <a href="/events">All events</a>
+    </div>
+    <EventCards items={nextEvents} />
+  </section>
+
+  <section class="container-width mt-12">
+    <div class="card text-stone-800">
+      <Content />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,176 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+site_url: "https://www.stmaryhenbury.org.uk"
+display_url: "https://www.stmaryhenbury.org.uk"
+
+collections:
+  - name: "news"
+    label: "News"
+    folder: "src/content/news"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Category", name: "category", widget: "select", options: ["Parish", "Community", "Worship"] }
+      - { label: "Draft", name: "draft", widget: "boolean", default: false }
+      - label: "Image"
+        name: "image"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Image file", name: "src", widget: "image", required: false }
+          - { label: "Alt text", name: "alt", widget: "string", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "events"
+    label: "Events"
+    folder: "src/content/events"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Start date", name: "start", widget: "datetime", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "End date (optional)", name: "end", required: false, widget: "datetime", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Time label", name: "time", widget: "string", hint: "Example: 10.00am" }
+      - { label: "Location", name: "location", widget: "string" }
+      - { label: "Category", name: "category", widget: "select", options: ["All-age", "Music", "Seasonal", "Community"] }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "people"
+    label: "People"
+    folder: "src/content/people"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Role", name: "role", widget: "string" }
+      - { label: "Display order", name: "order", widget: "number", default: 99, min: 1 }
+      - { label: "Phone", name: "phone", widget: "string", required: false }
+      - { label: "Email", name: "email", widget: "string", required: false }
+      - { label: "Photo", name: "photo", widget: "image" }
+      - { label: "Photo alt text", name: "photoAlt", widget: "string" }
+      - { label: "Bio", name: "body", widget: "markdown" }
+
+  - name: "pages"
+    label: "Pages"
+    folder: "src/content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Intro", name: "intro", widget: "text" }
+      - label: "Cards"
+        name: "cards"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Text", name: "text", widget: "text" }
+          - { label: "Link text", name: "linkText", widget: "string", required: false }
+          - { label: "Link href", name: "linkHref", widget: "string", required: false }
+      - label: "Sections"
+        name: "sections"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Section title", name: "title", widget: "string" }
+          - label: "Bullet points"
+            name: "items"
+            widget: "list"
+            field: { label: "Point", name: "point", widget: "string" }
+      - label: "FAQs"
+        name: "faqs"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Question", name: "question", widget: "string" }
+          - { label: "Answer", name: "answer", widget: "text" }
+      - label: "Next steps"
+        name: "nextSteps"
+        widget: "list"
+        required: false
+        field: { label: "Step", name: "step", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "service-times"
+    label: "Service Times"
+    files:
+      - label: "Weekly services"
+        name: "weekly"
+        file: "src/content/service-times/weekly.json"
+        fields:
+          - { label: "Updated date", name: "updated", widget: "string" }
+          - label: "Entries"
+            name: "entries"
+            widget: "list"
+            fields:
+              - { label: "Day", name: "day", widget: "string" }
+              - { label: "Time", name: "time", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Notes", name: "notes", widget: "text", required: false }
+
+  - name: "safeguarding"
+    label: "Safeguarding Data"
+    files:
+      - label: "Contacts and documents"
+        name: "contacts"
+        file: "src/content/safeguarding/contacts.json"
+        fields:
+          - label: "Urgent guidance"
+            name: "urgentGuidance"
+            widget: "list"
+            field: { label: "Guidance", name: "guidance", widget: "string" }
+          - label: "Local contacts"
+            name: "localContacts"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Phone", name: "phone", widget: "string", required: false }
+              - { label: "Email", name: "email", widget: "string", required: false }
+          - label: "External helplines"
+            name: "helplines"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Phone", name: "phone", widget: "string", required: false }
+              - { label: "Website", name: "website", widget: "string", required: false }
+              - { label: "Notes", name: "notes", widget: "text", required: false }
+          - label: "Documents"
+            name: "documents"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "File URL", name: "file", widget: "string" }
+              - { label: "Summary", name: "summary", widget: "text" }
+
+  - name: "history"
+    label: "History Timeline"
+    files:
+      - label: "Timeline"
+        name: "timeline"
+        file: "src/content/history/timeline.json"
+        fields:
+          - { label: "Intro", name: "intro", widget: "text" }
+          - label: "Timeline entries"
+            name: "entries"
+            widget: "list"
+            fields:
+              - { label: "Era label", name: "era", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Summary", name: "summary", widget: "text" }
+          - label: "Churchyard section bullets"
+            name: "churchyard"
+            widget: "list"
+            field: { label: "Bullet", name: "bullet", widget: "string" }

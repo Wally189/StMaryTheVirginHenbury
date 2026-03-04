@@ -1,0 +1,41 @@
+---
+import { formatDate } from "../utils/dates";
+
+interface Item {
+  id: string;
+  slug: string;
+  data: {
+    title: string;
+    summary: string;
+    start: Date;
+    time: string;
+    location: string;
+    category: string;
+  };
+}
+
+interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props;
+---
+
+<ul class="grid gap-4 md:grid-cols-3">
+  {
+    items.map((item) => (
+      <li class="card flex flex-col justify-between">
+        <div>
+          <p class="text-sm text-stone-700">{formatDate(item.data.start)} | {item.data.time}</p>
+          <h3 class="mt-2 text-2xl">{item.data.title}</h3>
+          <p class="mt-2 text-sm font-semibold uppercase tracking-wide text-harbour-700">{item.data.category}</p>
+          <p class="mt-2 text-stone-800">{item.data.summary}</p>
+          <p class="mt-2 text-sm text-stone-700">{item.data.location}</p>
+        </div>
+        <p class="mt-4">
+          <a href={`/events/${item.slug}`}>Event details</a>
+        </p>
+      </li>
+    ))
+  }
+</ul>

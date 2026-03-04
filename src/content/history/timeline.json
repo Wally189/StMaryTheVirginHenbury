@@ -1,0 +1,35 @@
+{
+  "intro": "St Mary the Virgin has served Henbury for many centuries. The building has changed over time, but worship, prayer, and parish life have remained at its heart.",
+  "entries": [
+    {
+      "era": "12th-13th centuries",
+      "title": "Norman origins and medieval growth",
+      "summary": "The earliest stonework points to a Norman church on this site. By the later medieval period, the church had become a central place for worship and village life."
+    },
+    {
+      "era": "15th century",
+      "title": "Tower and churchyard expansion",
+      "summary": "Much of the tower and parts of the nave were rebuilt or strengthened as the parish expanded, leaving the strong Perpendicular character seen today."
+    },
+    {
+      "era": "19th century",
+      "title": "Victorian restoration",
+      "summary": "As with many parish churches, substantial restoration work was carried out to repair the fabric and adapt seating and liturgical space."
+    },
+    {
+      "era": "20th century",
+      "title": "War memory and parish continuity",
+      "summary": "The church became a place of remembrance for local people lost in conflict. Parish records from this period also show steady everyday ministry through social change."
+    },
+    {
+      "era": "Today",
+      "title": "Living parish, active churchyard",
+      "summary": "St Mary's continues as a worshipping community and a historic landmark for Henbury, with regular services, pastoral ministry, and shared local events."
+    }
+  ],
+  "churchyard": [
+    "The churchyard includes memorials and graves from different periods, each reflecting the social history of Henbury.",
+    "Interpretation of memorials linked to slavery and enslavement is handled with care, factual language, and historical context.",
+    "The churchyard also includes the grave of Scipio Africanus, often described as an LGBT landmark grave as well as an important site in Black British history."
+  ]
+}

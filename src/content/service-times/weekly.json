@@ -1,0 +1,23 @@
+{
+  "updated": "2026-03-01",
+  "entries": [
+    {
+      "day": "Sunday",
+      "time": "8.00am",
+      "title": "Said Holy Communion (BCP)",
+      "notes": "A quieter service in traditional language."
+    },
+    {
+      "day": "Sunday",
+      "time": "10.00am",
+      "title": "Parish Eucharist",
+      "notes": "Junior Church most weeks during term time."
+    },
+    {
+      "day": "Wednesday",
+      "time": "10.30am",
+      "title": "Midweek Communion",
+      "notes": "Followed by tea and chat."
+    }
+  ]
+}

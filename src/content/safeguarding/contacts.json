@@ -1,0 +1,64 @@
+{
+  "urgentGuidance": [
+    "If someone is in immediate danger, call 999.",
+    "If you have concerns about a child or adult at risk, contact the Parish Safeguarding Officer as soon as possible.",
+    "If the concern involves someone in parish leadership, contact the Diocese of Bristol Safeguarding Team directly."
+  ],
+  "localContacts": [
+    {
+      "name": "Joanna Hart",
+      "role": "Parish Safeguarding Officer",
+      "phone": "07840 555 192",
+      "email": "safeguarding@stmaryhenbury.org.uk"
+    },
+    {
+      "name": "Fr Andrew Miller",
+      "role": "Vicar",
+      "phone": "0117 950 8644",
+      "email": "vicar@stmaryhenbury.org.uk"
+    },
+    {
+      "name": "Diocese of Bristol Safeguarding Team",
+      "role": "External church safeguarding support",
+      "phone": "0117 906 0100",
+      "email": "safeguarding@bristoldiocese.org"
+    }
+  ],
+  "helplines": [
+    {
+      "name": "NSPCC",
+      "phone": "0808 800 5000",
+      "website": "https://www.nspcc.org.uk",
+      "notes": "24-hour support for child protection concerns."
+    },
+    {
+      "name": "Safe Spaces",
+      "phone": "0300 303 1056",
+      "website": "https://www.safespacesenglandandwales.org.uk",
+      "notes": "Independent support for anyone affected by church-related abuse."
+    },
+    {
+      "name": "Hourglass",
+      "phone": "0808 808 8141",
+      "website": "https://www.wearehourglass.org",
+      "notes": "Support for older people experiencing abuse or neglect."
+    }
+  ],
+  "documents": [
+    {
+      "title": "Parish Safeguarding Policy",
+      "file": "/documents/parish-safeguarding-policy.pdf",
+      "summary": "Current policy statement adopted by PCC."
+    },
+    {
+      "title": "Responding Well Procedure",
+      "file": "/documents/responding-well-guide.pdf",
+      "summary": "How concerns are reported, recorded, and escalated."
+    },
+    {
+      "title": "Recruitment and DBS Guidance",
+      "file": "/documents/recruitment-and-dbs-guide.pdf",
+      "summary": "Safer recruitment process for volunteers and staff."
+    }
+  ]
+}
