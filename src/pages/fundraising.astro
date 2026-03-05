@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+---
+
+<BaseLayout title="Fundraising | St Mary the Virgin, Henbury" description="Support parish worship, mission, and the care of St Mary's historic building.">
+  <PageHero
+    title="Fundraising"
+    intro="Supporting worship, mission, and the long-term care of St Mary's for future generations."
+    image="/images/henbury-church-cross.jpg"
+    imageAlt="Churchyard cross in front of St Mary's church"
+  />
+
+  <section class="container-width mt-12">
+    <article class="section-rule">
+      <p class="eyebrow">Why we are fundraising</p>
+      <h2 class="mt-2 text-4xl">Faith, building, and community together</h2>
+      <p class="mt-3 text-nave-900">
+        St Mary's is both a worshipping parish and a historic church building. Gifts support ministry, practical church life, and repair work that keeps the building open and safe for everyone.
+      </p>
+      <ul class="mt-4 list-disc space-y-2 pl-5 text-nave-900">
+        <li>Church roof and fabric repairs</li>
+        <li>Heating and running costs for worship and community use</li>
+        <li>Support for pastoral ministry and local outreach</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="container-width mt-12">
+    <article class="section-rule">
+      <p class="eyebrow">Ways to give</p>
+      <div class="mt-4 grid gap-6 md:grid-cols-2">
+        <div>
+          <h3 class="text-2xl">One-off donation</h3>
+          <p class="mt-2 text-nave-900">Make a one-off contribution to the parish repair and mission fund.</p>
+          <p class="mt-3"><a class="button-primary" href="/contact">Ask for donation details</a></p>
+        </div>
+        <div>
+          <h3 class="text-2xl">Regular giving</h3>
+          <p class="mt-2 text-nave-900">Regular gifts help the parish plan confidently and maintain ministry through the year.</p>
+          <p class="mt-3"><a class="button-secondary" href="/contact">Set up planned giving</a></p>
+        </div>
+      </div>
+    </article>
+  </section>
+</BaseLayout>

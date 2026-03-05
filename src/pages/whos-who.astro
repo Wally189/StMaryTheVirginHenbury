@@ -12,32 +12,38 @@ const people = await Promise.all(
 );
 ---
 
-<BaseLayout title="Who's Who | St Mary the Virgin, Henbury" description="People and ministry contacts at St Mary's Henbury.">
+<BaseLayout title="Parish Team | St Mary the Virgin, Henbury" description="People and ministry contacts at St Mary's Henbury.">
   <PageHero
-    title="Who's Who"
+    title="Parish Team"
     intro="People you may meet at St Mary's and who to contact for help."
-    image="/images/logo.jpg"
-    imageAlt="St Mary's parish crest"
+    image="/images/henbury-church-porch.jpg"
+    imageAlt="Stone elevation of St Mary's church"
   />
-  <section class="container-width mt-10">
-    <ul class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+  <section class="container-width mt-12">
+    <div class="mb-6 border-l-2 border-harbour-500 pl-4">
+      <p class="text-sm text-nave-700">
+        Demo note: portrait placeholders are in use and can be replaced with real staff photos at launch.
+      </p>
+    </div>
+    <ul class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {
         people.map(({ entry, Content }) => (
           <li class="card">
+            <p class="eyebrow">Parish team</p>
             <img
               src={entry.data.photo}
               alt={entry.data.photoAlt}
-              class="h-48 w-full rounded-md border border-stone-200 object-cover"
+              class="h-52 w-full border border-nave-300/55 object-cover"
               loading="lazy"
               width="420"
               height="280"
             />
             <h2 class="mt-4 text-2xl">{entry.data.name}</h2>
             <p class="font-semibold text-harbour-900">{entry.data.role}</p>
-            <div class="mt-2 text-stone-800">
+            <div class="mt-2 text-nave-900">
               <Content />
             </div>
-            <div class="mt-3 space-y-1 text-sm">
+            <div class="mt-3 space-y-1 text-sm text-nave-700">
               {entry.data.phone && <p>{entry.data.phone}</p>}
               {entry.data.email && (
                 <p>

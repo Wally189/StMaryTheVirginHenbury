@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+---
+
+<BaseLayout title="Christmas at St Mary's | St Mary the Virgin, Henbury" description="Advent and Christmas worship and community events at St Mary's, Henbury.">
+  <PageHero
+    title="Christmas at St Mary's"
+    intro="Advent and Christmas worship for all ages in Henbury."
+    image="/images/henbury-churchyard-houses.jpg"
+    imageAlt="St Mary's churchyard in winter light"
+  />
+
+  <section class="container-width mt-12">
+    <article class="section-rule">
+      <p class="eyebrow">Seasonal worship</p>
+      <h2 class="mt-2 text-4xl">Advent and Christmas services</h2>
+      <p class="mt-3 text-nave-900">
+        This is a placeholder programme for the demo site. Replace with the current year's confirmed service dates and times.
+      </p>
+      <ul class="mt-4 divide-y divide-nave-300/45 border-y border-nave-300/45">
+        <li class="py-3">
+          <p class="font-semibold text-nave-900">Advent Carol Service | Sunday 6.00pm</p>
+          <p class="text-nave-700">Readings and carols to begin Advent.</p>
+        </li>
+        <li class="py-3">
+          <p class="font-semibold text-nave-900">Crib Service | Christmas Eve 4.00pm</p>
+          <p class="text-nave-700">A family service with the nativity story.</p>
+        </li>
+        <li class="py-3">
+          <p class="font-semibold text-nave-900">Midnight Eucharist | Christmas Eve 11.30pm</p>
+          <p class="text-nave-700">Holy Communion as Christmas begins.</p>
+        </li>
+        <li class="py-3">
+          <p class="font-semibold text-nave-900">Christmas Day Eucharist | 10.00am</p>
+          <p class="text-nave-700">Celebration service for all ages.</p>
+        </li>
+      </ul>
+    </article>
+  </section>
+</BaseLayout>

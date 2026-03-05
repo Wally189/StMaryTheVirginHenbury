@@ -1,11 +1,8 @@
 ---
 import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import ServiceTimesPanel from "../components/ServiceTimesPanel.astro";
-import NewsCards from "../components/NewsCards.astro";
-import EventCards from "../components/EventCards.astro";
+import { formatDateNoWeekday } from "../utils/dates";
 
-const home = await getEntry("pages", "home");
 const serviceTimes = await getEntry("service-times", "weekly");
 const allNews = (await getCollection("news")).filter((item) => !item.data.draft);
 const allEvents = await getCollection("events");
@@ -14,89 +11,174 @@ const latestNews = allNews.sort((a, b) => b.data.date.getTime() - a.data.date.ge
 const nextEvents = allEvents
   .filter((event) => event.data.start.getTime() >= Date.now() - 86400000)
   .sort((a, b) => a.data.start.getTime() - b.data.start.getTime())
-  .slice(0, 3);
+  .slice(0, 4);
 
-if (!home || !serviceTimes) {
+if (!serviceTimes) {
   throw new Error("Home page content is missing.");
 }
-
-const { Content } = await home.render();
 ---
 
 <BaseLayout
   title="St Mary the Virgin, Henbury | Parish church in Bristol"
-  description="Service times, events, contact details, and parish life at St Mary the Virgin, Henbury."
+  description="Faith, worship, and parish community life at St Mary the Virgin, Henbury."
 >
-  <section class="relative border-b border-stone-200 bg-stone-100">
-    <div class="container-width grid gap-6 py-10 md:grid-cols-[1.2fr_1fr] md:items-center">
-      <div>
-        <h1 class="text-4xl md:text-5xl">{home.data.title}</h1>
-        <p class="mt-3 max-w-2xl text-lg text-stone-800">{home.data.intro}</p>
-        <p class="mt-6">
-          <a class="button-primary no-underline" href="/welcome">Planning your first Sunday</a>
-        </p>
-      </div>
+  <section class="border-b border-nave-300/55 bg-stone-100">
+    <div class="container-width py-10">
+      <p class="eyebrow">St Mary the Virgin, Henbury | Faith. Community. History.</p>
+    </div>
+    <div class="container-width pb-6">
       <img
-        src="/images/StMarys2.jpg"
-        alt="Exterior of St Mary the Virgin, Henbury"
-        class="h-72 w-full rounded-lg border border-stone-300 object-cover shadow-card"
-        width="760"
-        height="500"
+        src="/images/henbury-church-porch.jpg"
+        alt="St Mary's porch and stone church wall in Henbury"
+        class="aspect-[21/8] w-full border border-nave-300/60 object-cover"
+        width="1800"
+        height="700"
         loading="eager"
       />
     </div>
-  </section>
-
-  <div class="container-width mt-8 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-    <section class="card">
-      <h2 class="text-2xl">This week's main service</h2>
-      <p class="mt-2 text-stone-800">Sunday 10.00am Parish Eucharist</p>
-      <p class="mt-1 text-stone-700">With hymns, sermon, and Holy Communion. Junior Church most term-time Sundays.</p>
-      <p class="mt-4">
-        <a class="button-secondary no-underline" href="/services-events">See all services</a>
-      </p>
-    </section>
-    <ServiceTimesPanel services={serviceTimes.data.entries} compact />
-  </div>
-
-  <section class="container-width mt-10">
-    <h2 class="text-3xl">Quick links</h2>
-    <ul class="mt-4 grid gap-4 md:grid-cols-3">
-      {
-        home.data.cards?.map((card) => (
-          <li class="card">
-            <h3 class="text-2xl">{card.title}</h3>
-            <p class="mt-2 text-stone-800">{card.text}</p>
-            {card.linkHref && card.linkText && (
-              <p class="mt-4">
-                <a href={card.linkHref}>{card.linkText}</a>
-              </p>
-            )}
-          </li>
-        ))
-      }
-    </ul>
-  </section>
-
-  <section class="container-width mt-12">
-    <div class="mb-4 flex items-end justify-between">
-      <h2 class="text-3xl">Latest news</h2>
-      <a href="/news">All news</a>
+    <div class="container-width pb-12 pt-3">
+      <div class="grid gap-8 md:grid-cols-[0.58fr_0.42fr]">
+        <h1 class="section-title">A Church of England parish at the heart of Henbury</h1>
+        <div>
+          <p class="text-lg text-nave-900">
+            Come to worship God, find belonging, and take part in local parish life.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a class="button-primary" href="/welcome">Planning your first Sunday</a>
+            <a class="button-secondary" href="/services-events">Mass times & worship</a>
+          </div>
+        </div>
+      </div>
     </div>
-    <NewsCards items={latestNews} />
   </section>
 
   <section class="container-width mt-12">
-    <div class="mb-4 flex items-end justify-between">
-      <h2 class="text-3xl">Next events</h2>
-      <a href="/events">All events</a>
+    <div class="section-rule">
+      <p class="eyebrow">Priority 1 | Faith and religion</p>
+      <div class="mt-4 grid gap-8 lg:grid-cols-[0.6fr_0.4fr]">
+        <div>
+          <h2 class="text-5xl">Worship this week</h2>
+          <ul class="mt-5 space-y-4 border-l-2 border-harbour-500 pl-5">
+            <li>
+              <p class="text-xl font-semibold text-nave-900">Sunday 10:00am Parish Eucharist</p>
+              <p class="text-nave-700">Main service with sermon, hymns, and Holy Communion.</p>
+            </li>
+            <li>
+              <p class="font-semibold text-nave-900">Sunday 8:00am Said Holy Communion (BCP)</p>
+            </li>
+            <li>
+              <p class="font-semibold text-nave-900">Wednesday 10:30am Midweek Communion</p>
+            </li>
+          </ul>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a class="button-primary" href="/services-events">See all services</a>
+            <a class="button-secondary" href="/welcome">What to expect on Sunday</a>
+          </div>
+          <p class="mt-3 text-sm text-nave-700">Updated: {serviceTimes.data.updated}</p>
+        </div>
+        <img
+          src="/images/henbury-church-cross.jpg"
+          alt="Churchyard cross at St Mary's"
+          class="aspect-[4/5] w-full border border-nave-300/55 object-cover"
+          width="960"
+          height="1200"
+          loading="lazy"
+        />
+      </div>
     </div>
-    <EventCards items={nextEvents} />
   </section>
 
-  <section class="container-width mt-12">
-    <div class="card text-stone-800">
-      <Content />
+  <section class="container-width mt-14">
+    <div class="section-rule">
+      <p class="eyebrow">Priority 2 | Community</p>
+      <div class="mt-4 grid gap-8 lg:grid-cols-[0.6fr_0.4fr]">
+        <div>
+          <h2 class="text-4xl">Life together in Henbury</h2>
+          <ul class="mt-4 divide-y divide-nave-300/45 border-y border-nave-300/45">
+            {
+              nextEvents.map((event) => (
+                <li class="py-4">
+                  <p class="eyebrow">{formatDateNoWeekday(event.data.start)} | {event.data.time}</p>
+                  <p class="text-xl font-semibold text-nave-900">{event.data.title}</p>
+                  <p class="text-sm font-semibold uppercase tracking-[0.1em] text-harbour-900">{event.data.category}</p>
+                </li>
+              ))
+            }
+          </ul>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a class="button-primary" href="/church-life">Groups and ministries</a>
+            <a class="button-secondary" href="/events">Full events calendar</a>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <img
+            src="/images/henbury-churchyard-houses.jpg"
+            alt="Churchyard and homes around St Mary's"
+            class="aspect-[16/10] w-full border border-nave-300/55 object-cover"
+            width="1200"
+            height="750"
+            loading="lazy"
+          />
+          <div class="border-t border-nave-300/55 pt-4">
+            <p class="text-nave-900">
+              Volunteer on rotas, support local outreach, or give to parish ministry and building care.
+            </p>
+            <p class="mt-2">
+              <a href="/church-life">Volunteering and giving details</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-width mt-14">
+    <div class="section-rule">
+      <p class="eyebrow">Priority 3 | History</p>
+      <div class="mt-4 grid gap-8 lg:grid-cols-[0.55fr_0.45fr]">
+        <div>
+          <h2 class="text-4xl">A living parish with deep roots</h2>
+          <ul class="mt-4 list-disc space-y-2 pl-5 text-nave-900">
+            <li>Norman and medieval foundations in the present church fabric.</li>
+            <li>Churchyard memorials read with care, context, and factual clarity.</li>
+            <li>Ongoing worship and witness in Henbury today.</li>
+          </ul>
+          <p class="mt-5">
+            <a class="button-secondary" href="/history">Explore parish history</a>
+          </p>
+        </div>
+        <img
+          src="/images/scipioafricanus.jpg"
+          alt="Historic memorial in St Mary's churchyard"
+          class="aspect-[16/10] w-full border border-nave-300/55 object-cover"
+          width="1200"
+          height="760"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="container-width mt-14">
+    <div class="section-rule">
+      <div class="mb-4 flex items-end justify-between">
+        <h2 class="text-3xl">Latest news</h2>
+        <a href="/news">All news</a>
+      </div>
+      <ul class="divide-y divide-nave-300/45 border-y border-nave-300/45">
+        {
+          latestNews.map((item) => (
+            <li class="grid gap-3 py-4 md:grid-cols-[0.25fr_0.75fr]">
+              <p class="eyebrow">{formatDateNoWeekday(item.data.date)}</p>
+              <div>
+                <p class="text-xl font-semibold text-nave-900">{item.data.title}</p>
+                <p class="mt-1 text-sm text-nave-700">{item.data.summary}</p>
+                <p class="mt-1"><a href={`/news/${item.slug}`}>Read update</a></p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
     </div>
   </section>
 </BaseLayout>

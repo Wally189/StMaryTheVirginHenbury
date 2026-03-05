@@ -15,16 +15,17 @@ const { services, compact = false } = Astro.props;
 ---
 
 <section class="card">
-  <h2 class="text-2xl">Weekly services</h2>
-  <ul class:list={["mt-4 divide-y divide-stone-200", compact ? "text-sm" : "text-base"]}>
+  <p class="eyebrow">Worship</p>
+  <h2 class="mt-2 text-3xl">Weekly services</h2>
+  <ul class:list={["mt-4 divide-y divide-nave-300/45", compact ? "text-sm" : "text-base"]}>
     {
       services.map((service) => (
         <li class="py-3">
-          <p class="font-semibold text-stone-900">
+          <p class="font-semibold text-nave-900">
             {service.day} | {service.time}
           </p>
-          <p class="text-stone-800">{service.title}</p>
-          {service.notes && <p class="text-stone-700">{service.notes}</p>}
+          <p class="text-nave-900">{service.title}</p>
+          {service.notes && <p class="text-nave-700">{service.notes}</p>}
         </li>
       ))
     }

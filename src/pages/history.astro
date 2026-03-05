@@ -18,22 +18,24 @@ const { Content } = await page.render();
     image="/images/scipioafricanus.jpg"
     imageAlt="Memorial area in St Mary's churchyard"
   />
-  <section class="container-width mt-10">
-    <article class="card">
-      <p class="text-stone-800">{timeline.data.intro}</p>
+  <section class="container-width mt-12">
+    <article class="section-rule">
+      <p class="eyebrow">Historical overview</p>
+      <p class="mt-3 text-nave-900">{timeline.data.intro}</p>
       <div class="mt-8">
         <Timeline entries={timeline.data.entries} />
       </div>
     </article>
   </section>
 
-  <section class="container-width mt-8">
-    <article class="card">
-      <h2 class="text-3xl">Churchyard & memorials</h2>
-      <ul class="mt-4 list-disc space-y-2 pl-5 text-stone-800">
+  <section class="container-width mt-12">
+    <article class="section-rule">
+      <p class="eyebrow">Churchyard</p>
+      <h2 class="mt-2 text-4xl">Churchyard & memorials</h2>
+      <ul class="mt-4 list-disc space-y-2 pl-5 text-nave-900">
         {timeline.data.churchyard.map((item) => <li>{item}</li>)}
       </ul>
-      <div class="mt-6 text-stone-800">
+      <div class="mt-6 text-nave-900">
         <Content />
       </div>
     </article>

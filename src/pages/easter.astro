@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+---
+
+<BaseLayout title="Easter at St Mary's | St Mary the Virgin, Henbury" description="Holy Week and Easter worship and events at St Mary's, Henbury.">
+  <PageHero
+    title="Easter at St Mary's"
+    intro="Holy Week and Easter worship in Henbury, with services for all ages."
+    image="/images/henbury-church-cross.jpg"
+    imageAlt="Churchyard cross in spring light at St Mary's"
+  />
+
+  <section class="container-width mt-12">
+    <article class="section-rule">
+      <p class="eyebrow">Holy Week programme</p>
+      <h2 class="mt-2 text-4xl">Easter services and events</h2>
+      <p class="mt-3 text-nave-900">
+        This is placeholder demo content for the vicar review. Swap these with confirmed dates and times for the current year.
+      </p>
+      <ul class="mt-4 divide-y divide-nave-300/45 border-y border-nave-300/45">
+        <li class="py-3">
+          <p class="font-semibold text-nave-900">Palm Sunday Eucharist | Sunday 10.00am</p>
+          <p class="text-nave-700">Procession and reading of the Passion gospel.</p>
+        </li>
+        <li class="py-3">
+          <p class="font-semibold text-nave-900">Maundy Thursday Eucharist | Thursday 7.30pm</p>
+          <p class="text-nave-700">Holy Communion with watch and prayer.</p>
+        </li>
+        <li class="py-3">
+          <p class="font-semibold text-nave-900">Good Friday Reflection | Friday 2.00pm</p>
+          <p class="text-nave-700">A quieter reflective service at the cross.</p>
+        </li>
+        <li class="py-3">
+          <p class="font-semibold text-nave-900">Easter Day Parish Eucharist | Sunday 10.00am</p>
+          <p class="text-nave-700">Celebration of the resurrection with all-age welcome.</p>
+        </li>
+      </ul>
+      <p class="mt-5">
+        <a class="button-secondary" href="/services-events">See full services and events</a>
+      </p>
+    </article>
+  </section>
+</BaseLayout>

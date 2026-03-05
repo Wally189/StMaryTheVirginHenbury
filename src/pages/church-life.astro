@@ -12,23 +12,24 @@ const { Content } = await page.render();
   <PageHero
     title={page.data.title}
     intro={page.data.intro}
-    image="/images/StMarys2.jpg"
-    imageAlt="View of church pews and aisle at St Mary's"
+    image="/images/henbury-churchyard-houses.jpg"
+    imageAlt="Churchyard and nearby Henbury houses by St Mary's"
   />
-  <section class="container-width mt-10">
-    <ul class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+  <section class="container-width mt-12">
+    <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {
         page.data.cards?.map((card) => (
           <li class="card">
+            <p class="eyebrow">Church life</p>
             <h2 class="text-2xl">{card.title}</h2>
-            <p class="mt-2 text-stone-800">{card.text}</p>
+            <p class="mt-2 text-nave-900">{card.text}</p>
           </li>
         ))
       }
     </ul>
   </section>
-  <section class="container-width mt-8">
-    <div class="card text-stone-800">
+  <section class="container-width mt-12">
+    <div class="section-rule text-nave-900">
       <Content />
     </div>
   </section>

@@ -9,19 +9,22 @@ interface Props {
 const { title, intro, image, imageAlt } = Astro.props;
 ---
 
-<section class="relative overflow-hidden border-b border-stone-200 bg-stone-100">
-  <div class="container-width grid gap-6 py-10 md:grid-cols-[1.2fr_1fr] md:items-center">
-    <div>
-      <h1 class="text-4xl md:text-5xl">{title}</h1>
-      <p class="mt-4 max-w-2xl text-lg text-stone-800">{intro}</p>
+<section class="relative overflow-hidden border-b border-nave-300/55 bg-stone-100">
+  <div class="container-width py-14">
+    <p class="eyebrow">Parish information</p>
+    <div class="mt-4 grid gap-8 md:grid-cols-[0.56fr_0.44fr] md:items-start">
+      <h1 class="section-title">{title}</h1>
+      <p class="max-w-xl text-lg text-nave-900">{intro}</p>
     </div>
+  </div>
+  <div class="container-width border-t border-nave-300/55 pb-8 pt-6">
     <img
       src={image}
       alt={imageAlt}
-      class="h-64 w-full rounded-lg border border-stone-300 object-cover shadow-card"
+      class="aspect-[18/7] w-full border border-nave-300/70 object-cover"
       loading="lazy"
-      width="640"
-      height="400"
+      width="1600"
+      height="620"
     />
   </div>
 </section>

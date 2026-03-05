@@ -19,18 +19,18 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<ul class="grid gap-4 md:grid-cols-3">
+<ul class="divide-y divide-nave-300/45 border-y border-nave-300/45">
   {
     items.map((item) => (
-      <li class="card flex flex-col justify-between">
+      <li class="grid gap-3 py-5 md:grid-cols-[0.24fr_0.76fr] md:items-start">
+        <p class="eyebrow">{formatDateNoWeekday(item.data.date)} | {item.data.category}</p>
         <div>
-          <p class="text-sm text-stone-700">{formatDateNoWeekday(item.data.date)} | {item.data.category}</p>
-          <h3 class="mt-2 text-2xl">{item.data.title}</h3>
-          <p class="mt-2 text-stone-800">{item.data.summary}</p>
-        </div>
-        <p class="mt-4">
+          <h3 class="text-2xl">{item.data.title}</h3>
+          <p class="mt-2 text-nave-900">{item.data.summary}</p>
+          <p class="mt-2">
           <a href={`/news/${item.slug}`}>Read more</a>
         </p>
+        </div>
       </li>
     ))
   }

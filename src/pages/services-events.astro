@@ -21,65 +21,67 @@ if (!serviceTimes) throw new Error("Missing service times.");
   <PageHero
     title="Services & Events"
     intro="Regular worship and parish events for all ages in Henbury."
-    image="/images/StMarys2.jpg"
-    imageAlt="Congregation space at St Mary's church"
+    image="/images/henbury-church-porch.jpg"
+    imageAlt="St Mary's porch and side elevation"
   />
 
-  <section class="container-width mt-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-    <article class="card">
-      <h2 class="text-3xl">Weekly services</h2>
-      <p class="mt-2 text-stone-800">Updated {serviceTimes.data.updated}</p>
-      <ul class="mt-4 divide-y divide-stone-200">
+  <section class="container-width mt-12 grid gap-10 lg:grid-cols-[0.92fr_1.08fr]">
+    <article class="section-rule">
+      <p class="eyebrow">Worship pattern</p>
+      <h2 class="mt-2 text-4xl">Weekly services</h2>
+      <p class="mt-2 text-nave-700">Updated {serviceTimes.data.updated}</p>
+      <ul class="mt-4 divide-y divide-nave-300/45">
         {serviceTimes.data.entries.map((entry) => (
           <li class="py-3">
-            <p class="font-semibold text-stone-900">
+            <p class="font-semibold text-nave-900">
               {entry.day} | {entry.time}
             </p>
-            <p class="text-stone-800">{entry.title}</p>
-            {entry.notes && <p class="text-stone-700">{entry.notes}</p>}
+            <p class="text-nave-900">{entry.title}</p>
+            {entry.notes && <p class="text-nave-700">{entry.notes}</p>}
           </li>
         ))}
       </ul>
     </article>
 
-    <article class="card">
-      <h2 class="text-3xl">Search news and events</h2>
-      <label class="mt-4 block text-sm font-semibold text-stone-900" for="search-items">Search by title, category, or summary</label>
+    <article class="section-rule">
+      <p class="eyebrow">Find quickly</p>
+      <h2 class="mt-2 text-4xl">Search news and events</h2>
+      <label class="mt-4 block text-sm font-semibold text-nave-900" for="search-items">Search by title, category, or summary</label>
       <input
         id="search-items"
         data-search-input
-        class="mt-2 w-full rounded-md border-stone-300"
+        class="mt-2 w-full border-nave-300 bg-stone-50"
         type="search"
         placeholder="Try: all-age, choir, Lent, community"
       />
-      <p class="mt-2 text-sm text-stone-700" id="search-status">Showing all items.</p>
+      <p class="mt-2 text-sm text-nave-700" id="search-status">Showing all items.</p>
       <p class="mt-4 text-sm">
         <a href="/calendar.ics">Download parish events as iCal</a>
       </p>
-      <ul class="mt-4 space-y-3" data-search-list>
+      <ul class="mt-4 divide-y divide-nave-300/45 border-y border-nave-300/45" data-search-list>
         {
           events.map((event) => (
             <li
-              class="rounded-md border border-stone-200 p-3"
+              class="py-3"
               data-search-item
               data-search-text={`${event.data.title} ${event.data.summary} ${event.data.category} ${event.data.location}`.toLowerCase()}
             >
-              <p class="text-sm text-stone-700">{formatDate(event.data.start)} | {event.data.time}</p>
-              <p class="font-semibold text-stone-900">{event.data.title}</p>
-              <p class="text-sm text-harbour-700">{event.data.category}</p>
+              <p class="text-sm text-nave-700">{formatDate(event.data.start)} | {event.data.time}</p>
+              <p class="font-semibold text-nave-900">{event.data.title}</p>
+              <p class="text-sm text-harbour-900">{event.data.category}</p>
             </li>
           ))
         }
         {
           news.map((item) => (
             <li
-              class="rounded-md border border-stone-200 p-3"
+              class="py-3"
               data-search-item
               data-search-text={`${item.data.title} ${item.data.summary} ${item.data.category}`.toLowerCase()}
             >
-              <p class="text-sm text-stone-700">News | {item.data.category}</p>
-              <p class="font-semibold text-stone-900">{item.data.title}</p>
-              <p class="text-sm text-stone-800">{item.data.summary}</p>
+              <p class="text-sm text-nave-700">News | {item.data.category}</p>
+              <p class="font-semibold text-nave-900">{item.data.title}</p>
+              <p class="text-sm text-nave-900">{item.data.summary}</p>
             </li>
           ))
         }
@@ -87,24 +89,27 @@ if (!serviceTimes) throw new Error("Missing service times.");
     </article>
   </section>
 
-  <section class="container-width mt-12">
-    <h2 class="text-3xl">Events by category</h2>
-    <div class="mt-4 grid gap-4 md:grid-cols-2">
+  <section class="container-width mt-14">
+    <div class="section-rule">
+      <h2 class="text-4xl">Events by category</h2>
+      <div class="mt-6 grid gap-6 md:grid-cols-2">
       {["All-age", "Music", "Seasonal", "Community"].map((category) => (
         <article class="card">
+          <p class="eyebrow">Category</p>
           <h3 class="text-2xl">{category}</h3>
           <ul class="mt-3 space-y-2">
             {events
               .filter((event) => event.data.category === category)
               .slice(0, 4)
               .map((event) => (
-                <li class="text-stone-800">
+                <li class="text-nave-900">
                   <a href={`/events/${event.slug}`}>{event.data.title}</a> ({formatDate(event.data.start)})
                 </li>
               ))}
           </ul>
         </article>
       ))}
+      </div>
     </div>
   </section>
 

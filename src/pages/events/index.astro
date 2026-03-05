@@ -7,20 +7,23 @@ const events = (await getCollection("events")).sort((a, b) => a.data.start.getTi
 ---
 
 <BaseLayout title="Events | St Mary the Virgin, Henbury" description="Upcoming events at St Mary the Virgin, Henbury.">
-  <section class="container-width mt-10">
-    <div class="flex flex-wrap items-end justify-between gap-3">
-      <h1 class="text-4xl">Events</h1>
+  <section class="container-width mt-12">
+    <div class="section-rule flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <p class="eyebrow">Calendar</p>
+        <h1 class="mt-2 text-5xl">Events</h1>
+      </div>
       <a href="/calendar.ics">Download iCal file</a>
     </div>
-    <ul class="mt-6 space-y-4">
+    <ul class="mt-8 divide-y divide-nave-300/45 border-y border-nave-300/45">
       {
         events.map((event) => (
-          <li class="card">
-            <p class="text-sm text-stone-700">{formatDate(event.data.start)} | {event.data.time}</p>
+          <li class="py-6">
+            <p class="eyebrow">{formatDate(event.data.start)} | {event.data.time}</p>
             <h2 class="mt-1 text-3xl">{event.data.title}</h2>
-            <p class="mt-1 font-semibold text-harbour-700">{event.data.category}</p>
-            <p class="mt-2 text-stone-800">{event.data.summary}</p>
-            <p class="mt-2 text-sm text-stone-700">{event.data.location}</p>
+            <p class="mt-1 font-semibold text-harbour-900">{event.data.category}</p>
+            <p class="mt-2 text-nave-900">{event.data.summary}</p>
+            <p class="mt-2 text-sm text-nave-700">{event.data.location}</p>
             <p class="mt-3">
               <a href={`/events/${event.slug}`}>Event details</a>
             </p>

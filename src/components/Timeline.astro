@@ -12,14 +12,14 @@ interface Props {
 const { entries } = Astro.props;
 ---
 
-<ol class="relative border-l-2 border-harbour-300 pl-6">
+<ol class="relative border-l border-nave-300 pl-6">
   {
     entries.map((entry) => (
       <li class="mb-8">
-        <div class="absolute -left-[9px] mt-1 h-4 w-4 rounded-full border-2 border-harbour-500 bg-stone-50"></div>
-        <p class="text-sm font-semibold uppercase tracking-widest text-harbour-700">{entry.era}</p>
+        <div class="absolute -left-[4px] mt-2 h-2 w-2 rounded-full bg-nave-700"></div>
+        <p class="eyebrow">{entry.era}</p>
         <h3 class="mt-1 text-2xl">{entry.title}</h3>
-        <p class="mt-2 text-stone-800">{entry.summary}</p>
+        <p class="mt-2 text-nave-900">{entry.summary}</p>
       </li>
     ))
   }
