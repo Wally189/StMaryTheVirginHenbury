@@ -1,4 +1,56 @@
-<!DOCTYPE html><html lang="en-GB"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Advent and Christmas worship and community events at St Mary's, Henbury."><link rel="icon" type="image/jpeg" href="/images/logo.jpg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cabin:wght@500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"><title>Christmas at St Mary&#39;s | St Mary the Virgin, Henbury</title><link rel="stylesheet" href="/StMaryTheVirginHenbury/_astro/christmas.CU1keVbA.css"></head> <body> <a href="#main-content" class="skip-link">Skip to main content</a> <header class="border-b border-nave-300/55 bg-stone-100"> <div class="container-width border-b border-nave-300/55 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-nave-700">
+<!DOCTYPE html><html lang="en-GB" data-base-url="/StMaryTheVirginHenbury"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="Advent and Christmas worship and community events at St Mary's, Henbury."><link rel="icon" type="image/jpeg" href="/images/logo.jpg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cabin:wght@500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet"><title>Christmas at St Mary&#39;s | St Mary the Virgin, Henbury</title><link rel="stylesheet" href="/StMaryTheVirginHenbury/_astro/christmas.CU1keVbA.css"></head> <body> <script>
+      (() => {
+        const baseUrl = document.documentElement.dataset.baseUrl || "/";
+        if (!baseUrl || baseUrl === "/") return;
+
+        const basePrefix = baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl;
+
+        const withBase = (value) => {
+          if (!value || !value.startsWith("/")) return value;
+          if (value.startsWith("//")) return value;
+          if (value.startsWith(basePrefix + "/") || value === basePrefix) return value;
+          return `${basePrefix}${value}`;
+        };
+
+        const rewriteSrcset = (srcset) => {
+          if (!srcset) return srcset;
+          return srcset
+            .split(",")
+            .map((part) => {
+              const trimmed = part.trim();
+              if (!trimmed) return trimmed;
+              const [url, descriptor] = trimmed.split(/\s+/, 2);
+              const nextUrl = withBase(url);
+              return descriptor ? `${nextUrl} ${descriptor}` : nextUrl;
+            })
+            .join(", ");
+        };
+
+        const patch = () => {
+          document.querySelectorAll("a[href]").forEach((el) => {
+            el.setAttribute("href", withBase(el.getAttribute("href")));
+          });
+          document.querySelectorAll("img[src], iframe[src], script[src], source[src]").forEach((el) => {
+            el.setAttribute("src", withBase(el.getAttribute("src")));
+          });
+          document.querySelectorAll("form[action]").forEach((el) => {
+            el.setAttribute("action", withBase(el.getAttribute("action")));
+          });
+          document.querySelectorAll("link[href]").forEach((el) => {
+            el.setAttribute("href", withBase(el.getAttribute("href")));
+          });
+          document.querySelectorAll("source[srcset], img[srcset]").forEach((el) => {
+            el.setAttribute("srcset", rewriteSrcset(el.getAttribute("srcset")));
+          });
+        };
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", patch);
+        } else {
+          patch();
+        }
+      })();
+    </script> <a href="#main-content" class="skip-link">Skip to main content</a> <header class="border-b border-nave-300/55 bg-stone-100"> <div class="container-width border-b border-nave-300/55 py-3 text-xs font-semibold uppercase tracking-[0.12em] text-nave-700">
 Sunday 10.00am Parish Eucharist | Everyone welcome
 </div> <div class="container-width flex items-center justify-between py-5"> <a class="no-underline focus-visible:ring-offset-stone-100" href="/"> <div class="flex items-center gap-3"> <img src="/images/logo.jpg" alt="St Mary the Virgin, Henbury crest" class="h-11 w-11 rounded-full border border-nave-300 object-cover" loading="eager" width="48" height="48"> <div> <p class="font-body text-lg font-semibold uppercase tracking-[0.16em] text-nave-900">St Mary the Virgin</p> <p class="text-xs uppercase tracking-[0.12em] text-nave-700">Henbury, Bristol</p> </div> </div> </a> <nav class="hidden flex-wrap gap-x-5 gap-y-2 lg:flex" aria-label="Primary"> <a href="/welcome" class="border-b border-transparent pb-1 text-xs font-semibold uppercase tracking-[0.11em] no-underline text-nave-700 hover:border-nave-500 hover:text-nave-900"> Welcome </a><a href="/services-events" class="border-b border-transparent pb-1 text-xs font-semibold uppercase tracking-[0.11em] no-underline text-nave-700 hover:border-nave-500 hover:text-nave-900"> Services &amp; Events </a><a href="/church-life" class="border-b border-transparent pb-1 text-xs font-semibold uppercase tracking-[0.11em] no-underline text-nave-700 hover:border-nave-500 hover:text-nave-900"> Church Life </a><a href="/life-events" class="border-b border-transparent pb-1 text-xs font-semibold uppercase tracking-[0.11em] no-underline text-nave-700 hover:border-nave-500 hover:text-nave-900"> Baptisms, Weddings &amp; Funerals </a><a href="/whos-who" class="border-b border-transparent pb-1 text-xs font-semibold uppercase tracking-[0.11em] no-underline text-nave-700 hover:border-nave-500 hover:text-nave-900"> Parish Team </a><a href="/contact" class="border-b border-transparent pb-1 text-xs font-semibold uppercase tracking-[0.11em] no-underline text-nave-700 hover:border-nave-500 hover:text-nave-900"> Get in touch </a><a href="/history" class="border-b border-transparent pb-1 text-xs font-semibold uppercase tracking-[0.11em] no-underline text-nave-700 hover:border-nave-500 hover:text-nave-900"> A Fascinating History </a><a href="/fundraising" class="border-b border-transparent pb-1 text-xs font-semibold uppercase tracking-[0.11em] no-underline text-nave-700 hover:border-nave-500 hover:text-nave-900"> Fundraising </a><a href="/safeguarding" class="border-b border-transparent pb-1 text-xs font-semibold uppercase tracking-[0.11em] no-underline text-nave-700 hover:border-nave-500 hover:text-nave-900"> Safeguarding </a><a href="/easter" class="border-b border-transparent pb-1 text-xs font-semibold uppercase tracking-[0.11em] no-underline text-nave-700 hover:border-nave-500 hover:text-nave-900"> Easter at St Mary&#39;s </a><a href="/christmas" class="border-b border-transparent pb-1 text-xs font-semibold uppercase tracking-[0.11em] no-underline text-nave-700 hover:border-nave-500 hover:text-nave-900"> Christmas at St Mary&#39;s </a> </nav> <details class="lg:hidden"> <summary class="cursor-pointer rounded-sm border border-nave-300 px-3 py-2 text-xs font-semibold uppercase tracking-[0.11em] text-nave-900">
 Menu
