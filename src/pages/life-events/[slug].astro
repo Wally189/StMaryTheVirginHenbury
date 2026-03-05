@@ -3,16 +3,17 @@ import { getEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHero from "../../components/PageHero.astro";
 
-const allowed = ["baptisms", "weddings", "funerals"] as const;
+const validSlugs = ["baptisms", "weddings", "funerals"];
 
 export async function getStaticPaths() {
-  return allowed.map((slug) => ({
+  const slugs = ["baptisms", "weddings", "funerals"];
+  return slugs.map((slug) => ({
     params: { slug },
   }));
 }
 
 const { slug } = Astro.params;
-if (!slug || !allowed.includes(slug as (typeof allowed)[number])) {
+if (!slug || !validSlugs.includes(slug)) {
   throw new Error("Invalid life event route.");
 }
 
