@@ -1,0 +1,50 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//St Mary the Virgin Henbury//Events//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:parish-eucharist@stmaryhenbury.org.uk
+DTSTAMP:20260305T171651Z
+DTSTART:20260308T000000Z
+DTEND:20260308T010000Z
+SUMMARY:Sunday Parish Eucharist
+DESCRIPTION:Our main weekly service with hymns\, sermon\, and Holy Communion.
+LOCATION:St Mary the Virgin\, Church Lane
+END:VEVENT
+BEGIN:VEVENT
+UID:community-cafe@stmaryhenbury.org.uk
+DTSTAMP:20260305T171651Z
+DTSTART:20260312T000000Z
+DTEND:20260312T010000Z
+SUMMARY:Thursday community cafe
+DESCRIPTION:Open church hall drop-in for tea\, cake\, and conversation.
+LOCATION:Parish Hall\, St Mary the Virgin
+END:VEVENT
+BEGIN:VEVENT
+UID:mothers-union@stmaryhenbury.org.uk
+DTSTAMP:20260305T171651Z
+DTSTART:20260316T000000Z
+DTEND:20260316T010000Z
+SUMMARY:Mothers' Union meeting
+DESCRIPTION:Monthly fellowship meeting with guest speaker and prayer.
+LOCATION:Parish Hall\, St Mary the Virgin
+END:VEVENT
+BEGIN:VEVENT
+UID:choral-evensong@stmaryhenbury.org.uk
+DTSTAMP:20260305T171651Z
+DTSTART:20260322T000000Z
+DTEND:20260322T010000Z
+SUMMARY:Choral Evensong
+DESCRIPTION:Traditional Evensong sung by parish choir and guests.
+LOCATION:St Mary the Virgin\, Church Lane
+END:VEVENT
+BEGIN:VEVENT
+UID:easter-garden@stmaryhenbury.org.uk
+DTSTAMP:20260305T171651Z
+DTSTART:20260328T000000Z
+DTEND:20260328T010000Z
+SUMMARY:Children make the Easter garden
+DESCRIPTION:A practical all-age afternoon making the Easter garden scene in church.
+LOCATION:St Mary the Virgin\, south aisle
+END:VEVENT
+END:VCALENDAR
